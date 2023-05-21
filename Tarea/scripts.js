@@ -21,7 +21,7 @@ function cambiarColor() {
         h1Element.appendChild(textNode);
         divElement.appendChild(h1Element);
       }
-      function ocultarMensa je() {
+      function ocultarMensaje() {
         var h2Element = document.getElementById("H2");
         h2Element.style.display = "none";
       }
