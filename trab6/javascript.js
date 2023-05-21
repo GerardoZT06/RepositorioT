@@ -36,7 +36,6 @@ function imagenAnterior() {
   actualizarImagen();
 }
 
-// Agregar EventListeners a los botones
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("btnSiguiente").addEventListener("click", siguienteImagen);
   document.getElementById("btnAnterior").addEventListener("click", imagenAnterior);
