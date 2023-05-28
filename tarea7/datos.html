@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="estilos .css">
+    <script src="scriptsfo.js"></script>
+    <script>
+        window.onload = function() {
+      var parametros = new URLSearchParams(window.location.search);
+
+      var nombres = parametros.get("nombres");
+      var apellidos = parametros.get("apellidos");
+      var correo = parametros.get("correo");
+      var fechaNacimiento = parametros.get("fecha-nacimiento");
+      var telefono = parametros.get("telefono");
+      var usuario = parametros.get("usuario");
+      var contrasena = parametros.get("contrasena");
+      var repetirContrasena = parametros.get("repetir-contrasena");
+
+
+      document.getElementById("info-nombres").innerHTML = nombres;
+      document.getElementById("info-apellidos").innerHTML = apellidos;
+      document.getElementById("info-correo").innerHTML = '<a href="mailto:' + correo + '">' + correo + '</a>';
+      document.getElementById("info-telefono").innerHTML = '<a href="tel:' + telefono + '">' + telefono + '</a>';
+
+      var fechaActual = new Date();
+      var fechaNacimientoArray = fechaNacimiento.split("-");
+      var anioNacimiento = parseInt(fechaNacimientoArray[0]);
+      var mesNacimiento = parseInt(fechaNacimientoArray[1]) - 1; // Los meses en JavaScript se cuentan desde 0
+      var diaNacimiento = parseInt(fechaNacimientoArray[2]);
+      var fechaNacimientoCompleta = new Date(anioNacimiento, mesNacimiento, diaNacimiento);
+      var edad = fechaActual.getFullYear() - fechaNacimientoCompleta.getFullYear() - 1;
+
+      document.getElementById("info-edad").innerHTML = edad;
+
+      if (contrasena.length < 5) {
+        document.getElementById("advertencia-contrasena").innerHTML = '¡Tu contraseña es insegura! Debe tener al menos 5 caracteres.';
+      }
+    }
+    </script>
+    <title>DATOS</title>
+    <style>
+        .top{
+            align-items: center; 
+            width: 500px;
+            position: initial;
+            background-color: rgb(241, 231, 85);
+            overflow-y: auto;
+            margin-left: 100px;
+            display: flexbox;
+        
+        }
+
+        .container{
+            width: 700px;
+            overflow: hidden;
+            position: sticky;
+            background-color: rgb(122, 101, 182);
+            overflow-y: auto;
+            margin-top: 50px;
+            margin-left: 300px;
+            display: flexbox;
+            padding: 50px;
+        }
+        .submit{
+            align-items: center;
+            width: 450px;
+            position: sticky;
+            background-color: rgb(241, 231, 85);
+
+            margin-top: 50px;
+            display: flexbox;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body style="text-align: center;">
+    <div class="container" >
+        <div class="top">
+            <h1>DATOS</h1>
+        </div>
+
+  <h1>Nombres: <span id="info-nombres"></span></h1>
+  <h2>Apellidos: <span id="info-apellidos"></span></h2>
+  <p>Correo: <span id="info-correo"></span></p>
+  <p>Teléfono: <span id="info-telefono"></span></p>
+  <p>Edad: <span id="info-edad"></span></p>
+  <p id="advertencia-contrasena"></p>
+        
+    </div>
+
+
+    
+    
+</body>
+</html>
